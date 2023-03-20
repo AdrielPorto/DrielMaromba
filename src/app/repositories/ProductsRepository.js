@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const ProductSchema = new mongoose.Schema({
-    nome: { type: String, required: true },
-    marca: { type: String, required: true },
-    categoria: { type: String, required: true },
-    descricao: { type: String, required: true },
-    valor: { type: Number, required: true }
+    nome: {type: String, required: true},
+    marca: {type: String, required: true},
+    categoria: {type: String, required: true},
+    descricao: {type: String, required: true},
+    valor: {type: Number, required: true}
 });
 
 
@@ -42,7 +42,7 @@ class ProductRepository {
     }
 
     async update(id, productData) {
-        return ProductModel.findByIdAndUpdate(id, productData, { new: true });
+        return ProductModel.findByIdAndUpdate(id, productData, {new: true});
     }
 
     async delete(id) {
