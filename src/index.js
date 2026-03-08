@@ -1,21 +1,11 @@
-const express = require('express');
-const mongoose = require('mongoose');
+require('dotenv').config();
+const app = require('./app');
+const { connect } = require('./config/database');
 
-const app = express();
+const PORT = process.env.PORT || 3000;
 
-mongoose.connect('mongodb+srv://adrielpantunes:Hxc3zhIcVIROv9le@drielzin.snfemwj.mongodb.net/DrielMaromba?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then(() => console.log('Conectado'))
-    .catch((error) => console.log('Erro ao conectar com o MongoDB', error));
-
-
-const routes = require('./routes');
-
-app.use(express.json());
-app.use(routes);
-
-app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000.');
+connect().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+  });
 });
